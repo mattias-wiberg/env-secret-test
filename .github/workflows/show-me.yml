@@ -2,6 +2,12 @@ name: Show Me the S3cr3tz
 on: [push]
 concurrency: production
 
+env:
+  ENV_SECRET: ${{ secrets.ENV_SECRET }}
+  REPO_SECRET: ${{ secrets.REPO_SECRET }}
+  ENV_VAR: ${{ vars.ENV_VAR }}
+  REPO_VAR: ${{ vars.REPO_VAR }}
+
 jobs:
   debug:
     name: Debug
@@ -11,11 +17,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Set env as secret
-        env:
-          ENV_SECRET: ${{ secrets.ENV_SECRET }}
-          REPO_SECRET: ${{ secrets.REPO_SECRET }}
-          ENV_VAR: ${{ vars.ENV_VAR }}
-          REPO_VAR: ${{ vars.REPO_VAR }}
         run: |
           import os
           print("ENV_SECRET:")
