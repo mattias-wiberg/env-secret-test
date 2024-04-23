@@ -1,6 +1,5 @@
 name: Show Me the S3cr3tz
 on: [push]
-concurrency:
 
 env:
   ENV_SECRET: ${{ secrets.ENV_SECRET }}
