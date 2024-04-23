@@ -1,6 +1,6 @@
 name: Show Me the S3cr3tz
 on: [push]
-concurrency: production
+concurrency:
 
 env:
   ENV_SECRET: ${{ secrets.ENV_SECRET }}
@@ -12,6 +12,7 @@ jobs:
   debug:
     name: Debug
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Check out code
